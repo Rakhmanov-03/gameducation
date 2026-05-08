@@ -1,7 +1,7 @@
 /* ─── NAVBAR LOGO ─── */
 .nav-logo-brand {
   font-family: var(--font-mono);
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 1px;
   color: var(--text);
