@@ -1,0 +1,360 @@
+/* ─── NAVBAR LOGO ─── */
+.nav-logo-brand {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  font-weight: 700;
+  margin-left: 250px;
+  letter-spacing: 1px;
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.nav-logo-brand .g {
+  color: var(--violet-l);
+}
+.nav-logo-brand .e {
+  color: var(--cyan);
+}
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+.nav-links a:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 140px 40px 60px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  background: rgba(34, 211, 238, 0.06);
+  padding: 6px 18px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+.hero-badge::before {
+  content: "◈";
+  font-size: 10px;
+}
+
+.hero h1 {
+  font-family: var(--font-mono);
+  font-size: clamp(38px, 8vw, 80px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 460px;
+  margin: 0 auto 56px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+/* ─── STATS ─── */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 80px;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.stat {
+  flex: 1;
+  text-align: center;
+  padding: 24px 16px;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child {
+  border-right: none;
+}
+.stat-num {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text);
+  display: block;
+}
+.stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-top: 6px;
+  display: block;
+}
+
+/* ─── SECTION TITLE ─── */
+.section-title {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.section-title::before,
+.section-title::after {
+  content: "";
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─── GAMES GRID ─── */
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px 100px;
+  position: relative;
+  z-index: 1;
+}
+
+.game-card {
+  display: block;
+  text-decoration: none;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.game-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.35s;
+  border-radius: var(--radius);
+}
+
+.game-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-bright);
+}
+.game-card:hover::before {
+  opacity: 1;
+}
+
+.card-violet::before {
+  background: radial-gradient(
+    circle at 50% -20%,
+    rgba(139, 92, 246, 0.18),
+    transparent 65%
+  );
+}
+.card-cyan::before {
+  background: radial-gradient(
+    circle at 50% -20%,
+    rgba(34, 211, 238, 0.18),
+    transparent 65%
+  );
+}
+.card-amber::before {
+  background: radial-gradient(
+    circle at 50% -20%,
+    rgba(245, 158, 11, 0.18),
+    transparent 65%
+  );
+}
+
+.card-violet:hover {
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15);
+}
+.card-cyan:hover {
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 20px 60px rgba(34, 211, 238, 0.12);
+}
+.card-amber:hover {
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 20px 60px rgba(245, 158, 11, 0.12);
+}
+
+.card-icon {
+  font-size: 44px;
+  margin-bottom: 18px;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+.card-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+.tag-violet {
+  color: var(--violet-l);
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+.tag-cyan {
+  color: var(--cyan-l);
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+}
+.tag-amber {
+  color: var(--amber-l);
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.game-card h2 {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  letter-spacing: 0px;
+}
+
+.game-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.card-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--dim);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.card-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-arrow {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.3s;
+  color: var(--dim);
+}
+.card-violet:hover .card-arrow {
+  background: var(--violet);
+  border-color: var(--violet);
+  color: white;
+}
+.card-cyan:hover .card-arrow {
+  background: var(--cyan);
+  border-color: var(--cyan);
+  color: #0a0a1a;
+}
+.card-amber:hover .card-arrow {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #0a0a1a;
+}
+
+/* Difficulty dots */
+.difficulty {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border);
+}
+.dot-v {
+  background: var(--violet);
+}
+.dot-c {
+  background: var(--cyan);
+}
+.dot-a {
+  background: var(--amber);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 32px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dim);
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}

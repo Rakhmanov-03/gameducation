@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain Game — Gameducation</title>
+<link rel="stylesheet" href="../shared.css">
+<link rel="stylesheet" href="game3.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../index.html">Bosh sahifa</a>
+  <span class="nav-title" style="color:var(--amber-l)">🧠 BRAIN GAME</span>
+  <span></span>
+</nav>
+
+<div class="wrapper">
+
+  <!-- MENU SCREEN -->
+  <div class="screen active" id="screen-menu">
+    <div class="menu-header">
+      <span class="icon">🧠</span>
+      <h1>BRAIN GAME</h1>
+      <p>Raqamlarni esla, yig'indisini top</p>
+    </div>
+
+    <div class="input-group">
+      <label class="field-label" for="name-inp">Ismingiz</label>
+      <input class="text-input" id="name-inp" type="text" placeholder="Masalan: Malika" maxlength="20"
+             oninput="showNameError(null)">
+    </div>
+
+    <div class="field-label" style="margin-bottom:10px">Qiyinlik</div>
+    <div class="modes" id="mode-list">
+      <button class="mode-card selected" onclick="selectMode(this,'easy',2000,3)">
+        <span class="mode-icon">😊</span>
+        <div class="mode-info">
+          <div class="mode-name">Oson</div>
+          <div class="mode-desc">3 ta son, 2 soniya ko'rinadi</div>
+        </div>
+        <span class="mode-time">2s</span>
+      </button>
+      <button class="mode-card" onclick="selectMode(this,'medium',1500,4)">
+        <span class="mode-icon">😤</span>
+        <div class="mode-info">
+          <div class="mode-name">O'rta</div>
+          <div class="mode-desc">4 ta son, 1.5 soniya ko'rinadi</div>
+        </div>
+        <span class="mode-time">1.5s</span>
+      </button>
+      <button class="mode-card" onclick="selectMode(this,'hard',800,5)">
+        <span class="mode-icon">🔥</span>
+        <div class="mode-info">
+          <div class="mode-name">Qiyin</div>
+          <div class="mode-desc">5 ta son, 0.8 soniya ko'rinadi</div>
+        </div>
+        <span class="mode-time">0.8s</span>
+      </button>
+    </div>
+
+    <button class="btn btn-primary" onclick="initGame()">BOSHLASH →</button>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div class="screen" id="screen-game">
+    <div class="g-header">
+      <span class="g-player" id="g-player-name">—</span>
+      <div class="g-score-wrap">
+        <div class="g-score" id="g-score">0</div>
+        <div class="g-score-lbl">Ball</div>
+      </div>
+    </div>
+
+    <div class="nums-card" id="nums-card">
+      <div class="countdown-overlay" id="countdown-overlay">
+        <div class="countdown-num" id="countdown-num">3</div>
+      </div>
+      <div class="nums-display" id="nums-display">Tayyor?</div>
+    </div>
+
+    <div class="timer-bar-wrap" id="timer-bar-wrap" style="display:none">
+      <div class="timer-info">
+        <span>Javob vaqti</span>
+        <span id="timer-text">10s</span>
+      </div>
+      <div class="timer-bar">
+        <div class="timer-fill" id="timer-fill"></div>
+      </div>
+    </div>
+
+    <div class="ans-row" id="ans-row" style="display:none">
+      <input class="num-input" type="number" id="num-inp" placeholder="Yig'indi?" autocomplete="off">
+      <button class="btn-answer" onclick="checkAnswer()">JAVOB</button>
+    </div>
+
+    <div class="feedback-banner" id="fb-banner"></div>
+
+    <div id="start-section">
+      <div class="start-instruction" id="start-inst">Tayyor bo'lsang, boshlash tugmasini bos</div>
+      <button class="btn-go" id="go-btn" onclick="nextRound()">▶ BOSHLASH</button>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-chip">
+        <div class="sv" id="stat-correct">0</div>
+        <div class="sl">To'g'ri</div>
+      </div>
+      <div class="stat-chip streak-chip">
+        <div class="sv" id="stat-streak">0</div>
+        <div class="sl">Ketma-ket</div>
+      </div>
+      <div class="stat-chip best-chip">
+        <div class="sv" id="stat-best">0</div>
+        <div class="sl">Rekord</div>
+      </div>
+    </div>
+
+    <button class="btn-finish" onclick="finishSession()">Tugatish →</button>
+  </div>
+
+  <!-- LEADERBOARD SCREEN -->
+  <div class="screen" id="screen-lb">
+    <div class="sess-result">
+      <span class="sess-icon" id="sess-icon">🏆</span>
+      <div class="sess-name" id="sess-name">—</div>
+      <div class="sess-score" id="sess-score">0</div>
+      <div class="sess-grade" id="sess-grade">—</div>
+    </div>
+
+    <div class="lb-card">
+      <div class="lb-title">🏆 TOP NATIJALAR</div>
+      <div class="lb-sub">Eng yaxshi balllar</div>
+      <div class="lb-rows" id="lb-rows"></div>
+      <button class="clear-btn" onclick="clearLb()">Natijalarni o'chirish</button>
+    </div>
+
+    <div class="lb-actions">
+      <button class="btn-la" onclick="playAgain()">Yana o'yna</button>
+      <button class="btn-lb" onclick="goMenu()">← Menyu</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="game3.js"></script>
+</body>
+</html>

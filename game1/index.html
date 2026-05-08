@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solo Math — Gameducation</title>
+<link rel="stylesheet" href="../shared.css">
+<link rel="stylesheet" href="game1.css">
+</head>
+<body>
+<canvas id="confetti-canvas"></canvas>
+
+<nav>
+  <a class="nav-logo" href="../index.html">Bosh sahifa</a>
+  <span class="nav-title" style="color:var(--violet-l)">🧮 SOLO MATH</span>
+  <span></span>
+</nav>
+
+<div class="wrapper">
+
+  <!-- MENU SCREEN -->
+  <div class="screen active" id="screen-menu">
+    <div class="menu-header">
+      <span class="icon">🧮</span>
+      <h1>SOLO MATH</h1>
+      <p>Qiyinlikni tanla va testni boshlash</p>
+    </div>
+
+    <div class="input-group">
+      <label class="field-label" for="name-input">Ismingiz</label>
+      <input type="text" id="name-input" class="text-input" placeholder="Masalan: Jasur" maxlength="20"
+             oninput="hideNameError()">
+    </div>
+
+    <div class="field-label" style="margin-bottom:12px">Qiyinlik darajasi</div>
+    <div class="diff-grid">
+      <button class="diff-btn selected" onclick="selectDiff(this,'easy')">
+        <span class="diff-icon">😊</span>
+        <span class="diff-name">Oson</span>
+        <span class="diff-desc">0–10, faqat +</span>
+      </button>
+      <button class="diff-btn" onclick="selectDiff(this,'medium')">
+        <span class="diff-icon">😤</span>
+        <span class="diff-name">O'rta</span>
+        <span class="diff-desc">0–20, + va −</span>
+      </button>
+      <button class="diff-btn" onclick="selectDiff(this,'hard')">
+        <span class="diff-icon">🔥</span>
+        <span class="diff-name">Qiyin</span>
+        <span class="diff-desc">0–50, ×, +, −</span>
+      </button>
+    </div>
+
+    <button class="btn btn-primary" onclick="startTest()">BOSHLASH →</button>
+
+    <div class="history-section">
+      <div class="history-title">Oxirgi natijalar</div>
+      <div class="history-list" id="menu-history"></div>
+      <button class="clear-btn" onclick="clearResults()">Natijalarni o'chirish</button>
+    </div>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div class="screen" id="screen-game">
+    <div class="game-topbar">
+      <span class="player-name" id="display-name">—</span>
+      <div class="timer-wrap">
+        <svg class="timer-svg" width="72" height="72" viewBox="0 0 72 72">
+          <circle class="timer-bg" cx="36" cy="36" r="32"/>
+          <circle class="timer-ring" id="timer-ring" cx="36" cy="36" r="32"/>
+        </svg>
+        <div class="timer-text" id="timer-display">15</div>
+      </div>
+      <span class="q-counter" id="q-counter">1 / 20</span>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span>Natija</span>
+        <span id="live-score">0 to'g'ri</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-text" id="question-text">?</div>
+    </div>
+
+    <div class="answer-row">
+      <input class="answer-input" type="number" id="answer-input" placeholder="=" autocomplete="off">
+      <button class="btn-check" onclick="submitAnswer()">JAVOB</button>
+    </div>
+
+    <div class="feedback" id="feedback"></div>
+
+    <div class="score-row">
+      <div class="score-chip correct-chip">
+        <div class="val" id="correct-count">0</div>
+        <div class="lbl">To'g'ri</div>
+      </div>
+      <div class="score-chip wrong-chip">
+        <div class="val" id="wrong-count">0</div>
+        <div class="lbl">Xato</div>
+      </div>
+      <div class="score-chip">
+        <div class="val" id="remaining-count">20</div>
+        <div class="lbl">Qoldi</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div class="screen" id="screen-result">
+    <div class="result-card">
+      <span class="result-icon" id="result-icon">🏆</span>
+      <div class="result-name" id="result-name">—</div>
+      <div class="result-sublabel">Natija</div>
+      <div class="result-score" id="result-score">
+        <span id="res-correct">0</span>
+        <span class="slash"> / 20</span>
+      </div>
+      <div class="result-grade" id="result-grade"></div>
+      <div class="result-actions">
+        <button class="btn btn-primary" style="flex:1" onclick="showMenu()">← Qaytish</button>
+        <button class="btn-redo" onclick="restartTest()">Yana o'yna →</button>
+      </div>
+    </div>
+
+    <div class="history-section" style="margin-top:24px">
+      <div class="history-title">Barcha natijalar</div>
+      <div class="history-list" id="result-history"></div>
+      <button class="clear-btn" onclick="clearResults()">Natijalarni o'chirish</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="game1.js"></script>
+</body>
+</html>

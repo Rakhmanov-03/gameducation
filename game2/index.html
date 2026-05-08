@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Battle — Gameducation</title>
+<link rel="stylesheet" href="../shared.css">
+<link rel="stylesheet" href="game2.css">
+</head>
+<body>
+<canvas id="confetti-canvas"></canvas>
+
+<nav>
+  <a class="nav-logo" href="../index.html">Bosh sahifa</a>
+  <span class="nav-title" style="color:var(--amber-l)">⚔️ BATTLE</span>
+  <span></span>
+</nav>
+
+<div class="wrapper">
+
+  <!-- SETUP SCREEN -->
+  <div class="screen active" id="screen-setup">
+    <div class="setup-header">
+      <span class="icon">⚔️</span>
+      <h1>BATTLE</h1>
+      <p>Ikkita o'yinchi — bitta g'olib</p>
+    </div>
+
+    <div class="players-grid">
+      <div class="player-setup p1-side">
+        <span class="ps-label c1">1-o'yinchi</span>
+        <span class="ps-icon">⚡</span>
+        <input class="ps-input i1" id="p1-name" type="text" placeholder="Isming?" maxlength="12"
+               oninput="showFieldError('p1-name','p1-err',null)">
+        <span class="name-err" id="p1-err"></span>
+      </div>
+      <div class="player-setup p2-side">
+        <span class="ps-label c2">2-o'yinchi</span>
+        <span class="ps-icon">💧</span>
+        <input class="ps-input i2" id="p2-name" type="text" placeholder="Isming?" maxlength="12"
+               oninput="showFieldError('p2-name','p2-err',null)">
+        <span class="name-err" id="p2-err"></span>
+      </div>
+    </div>
+
+    <div class="ops-section">
+      <span class="section-label">Amallar</span>
+      <div class="ops-grid">
+        <button class="op-btn active" data-op="+" onclick="toggleOp(this)">+</button>
+        <button class="op-btn" data-op="−" onclick="toggleOp(this)">−</button>
+        <button class="op-btn" data-op="×" onclick="toggleOp(this)">×</button>
+      </div>
+    </div>
+
+    <div class="target-section">
+      <span class="section-label">G'alaba chegarasi</span>
+      <div class="target-grid">
+        <button class="target-btn active" onclick="setTarget(this,10)">10 qadam</button>
+        <button class="target-btn" onclick="setTarget(this,15)">15 qadam</button>
+        <button class="target-btn" onclick="setTarget(this,20)">20 qadam</button>
+      </div>
+    </div>
+
+    <button class="btn-start" onclick="startGame()">⚡ JANGNI BOSHLASH ⚡</button>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div class="screen" id="screen-game">
+    <div class="tracks">
+      <div class="track-row">
+        <div class="track-name n1" id="p1-track-name">O'yinchi 1</div>
+        <div class="track-cells" id="track-p1"></div>
+        <div class="track-pos" id="pos-p1">0</div>
+      </div>
+      <div class="track-row">
+        <div class="track-name n2" id="p2-track-name">O'yinchi 2</div>
+        <div class="track-cells" id="track-p2"></div>
+        <div class="track-pos" id="pos-p2">0</div>
+      </div>
+    </div>
+
+    <div class="turn-bar t1" id="turn-bar">
+      <div>
+        <div class="turn-label">Navbat</div>
+        <div class="turn-player c1" id="turn-name">—</div>
+      </div>
+      <div class="turn-scores">
+        <div class="turn-score">
+          <div class="ts-val c1" id="s1-wins">0</div>
+          <div class="ts-lbl" id="s1-name">P1</div>
+        </div>
+        <div class="divider"></div>
+        <div class="turn-score">
+          <div class="ts-val c2" id="s2-wins">0</div>
+          <div class="ts-lbl" id="s2-name">P2</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-display t1" id="q-display">
+      <div class="q-text" id="q-text">? + ? = ?</div>
+    </div>
+
+    <div class="ans-row">
+      <input class="ans-input a1" type="number" id="ans-inp" placeholder="=" autocomplete="off">
+      <button class="btn-ok o1" id="ok-btn" onclick="checkAnswer()">OK</button>
+    </div>
+    <div class="feed-line" id="feed-line"></div>
+  </div>
+
+  <!-- WIN SCREEN -->
+  <div class="screen" id="screen-win">
+    <div class="win-card">
+      <span class="win-icon">🏆</span>
+      <div class="win-label">G'olib!</div>
+      <div class="win-name w1" id="win-name">—</div>
+      <div class="win-sub" id="win-sub">Barcha bosqichlarni zabt etdi!</div>
+      <div class="win-actions">
+        <button class="btn-g1" onclick="rematch()">⚔ Qayta o'yna</button>
+        <button class="btn-g2" onclick="showSetup()">← Sozlamalar</button>
+      </div>
+    </div>
+
+    <div class="leaderboard" id="leaderboard">
+      <div class="lb-header">Yutish tarixi</div>
+      <div id="lb-rows"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="game2.js"></script>
+</body>
+</html>
